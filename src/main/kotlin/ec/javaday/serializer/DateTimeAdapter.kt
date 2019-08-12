@@ -1,4 +1,4 @@
-package com.example.serializer
+package ec.javaday.serializer
 
 import com.squareup.moshi.FromJson
 import com.squareup.moshi.JsonDataException

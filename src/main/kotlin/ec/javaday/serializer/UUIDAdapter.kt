@@ -1,9 +1,8 @@
-package com.example.serializer
+package ec.javaday.serializer
 
 import com.squareup.moshi.FromJson
 import com.squareup.moshi.JsonDataException
 import com.squareup.moshi.ToJson
-import java.lang.Exception
 import java.util.*
 
 class UUIDAdapter {
