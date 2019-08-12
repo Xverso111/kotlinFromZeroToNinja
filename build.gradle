@@ -55,6 +55,8 @@ dependencies {
 ///////////////////////////////////////
     testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.4.2'
     testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.11.1'
+    testImplementation group: 'io.mockk', name: 'mockk', version: '1.8.9'
+    testImplementation group: 'io.ktor', name: 'ktor-server-test-host', version: ktor_version
 }
 
 compileKotlin {

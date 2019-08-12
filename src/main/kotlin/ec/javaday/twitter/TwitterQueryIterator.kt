@@ -4,6 +4,8 @@ import twitter4j.Query
 import twitter4j.QueryResult
 import twitter4j.Twitter
 
+fun Twitter.query(query: Query) = Iterable { TwitterQueryIterator(this, query) }
+
 class TwitterQueryIterator(
     private val twitter: Twitter,
     query: Query
