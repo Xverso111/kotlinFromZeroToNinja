@@ -5,13 +5,13 @@ import org.junit.jupiter.api.Test
 
 class SearchCriteriaTest {
 
+    //funciones con batiks
     @Test
     fun `should throw an error when name is empty`() {
-
         assertThatThrownBy {
             SearchCriteria(
-                name = "",
-                hashtags = listOf("any hashtag")
+                "",
+                listOf("any hashtag")
             )
         }
             .hasMessage("Cannot create a SearchCriteria without a name")
