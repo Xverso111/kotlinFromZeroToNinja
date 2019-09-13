@@ -26,8 +26,7 @@ class TwitterClient() {
             LocalDateTime(this.createdAt.toInstant().toEpochMilli()),
             this.text,
             this.favoriteCount,
-            this.retweetCount,
-            this.retweetedStatus?.id
+            this.retweetCount
         )
 
 }
@@ -38,6 +37,5 @@ data class Tweet(
     val tweetedDate: LocalDateTime,
     val text: String,
     val favoriteCount: Int,
-    val retweetCount: Int,
-    val reTweetId: Long?
+    var retweetCount: Int
 )
