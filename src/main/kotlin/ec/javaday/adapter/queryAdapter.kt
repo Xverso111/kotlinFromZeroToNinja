@@ -17,8 +17,8 @@ fun SearchCriteria.toQuery(): Query {
 
     return Query("$hashTags $filter").apply {
         dateRange?.let {
-            since = it.start.toString("YYYY-MM-dd")
-            until = it.end.toString("YYYY-MM-dd")
+            since = it.start.minusDays(1).toString("YYYY-MM-dd")
+            until = it.end.plusDays(1).toString("YYYY-MM-dd")
         }
     }
 }

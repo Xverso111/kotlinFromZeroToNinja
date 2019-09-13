@@ -30,6 +30,8 @@ dependencies {
     compile group: 'ch.qos.logback', name: 'logback-classic', version: "$logback_version"
     compile group: 'io.ktor', name: 'ktor-server-core', version: "$ktor_version"
     compile group: 'io.ktor', name: 'ktor-server-host-common', version: "$ktor_version"
+    compile group: "com.fasterxml.jackson.module", name: "jackson-module-kotlin", version: "$jackson_version"
+    compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-joda', version: '2.9.7'
 
     kapt group: 'com.squareup.moshi', name: 'moshi-kotlin-codegen', version: '1.8.0'
 

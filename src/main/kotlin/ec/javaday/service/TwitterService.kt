@@ -4,6 +4,7 @@ import ec.javaday.adapter.toQuery
 import ec.javaday.domain.SearchCriteria
 import ec.javaday.exception.ResourceNotFoundException
 import ec.javaday.repository.SearchCriteriaRepository
+import ec.javaday.twitter.Tweet
 import ec.javaday.twitter.TwitterClient
 import java.util.*
 
@@ -30,5 +31,13 @@ class TwitterService(
             .groupBy { it.userName }
                 // Mapea
             .mapValues { it.value.size }
+    }
+
+    fun question(searchCriteria: SearchCriteria): List<Tweet> {
+        val retrievedTweets = twitterClient.search(searchCriteria.toQuery())
+
+        return retrievedTweets
+                .filter { searchCriteria.dateRange?.contains(it.tweetedDate) ?: true }
+                .sortedByDescending { it.favoriteCount + it.retweetCount }
     }
 }

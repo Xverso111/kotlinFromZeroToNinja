@@ -5,6 +5,7 @@ import com.squareup.moshi.JsonDataException
 import ec.javaday.domain.SearchCriteria
 import ec.javaday.exception.BusinessRuleException
 import ec.javaday.moshiWithAdapters
+import ec.javaday.objectMapper
 import ec.javaday.repository.SearchCriteriaRepository
 import ec.javaday.service.TwitterService
 import ec.javaday.twitter.TwitterClient
@@ -13,9 +14,11 @@ import io.ktor.application.call
 import io.ktor.application.install
 import io.ktor.features.ContentNegotiation
 import io.ktor.features.StatusPages
+import io.ktor.http.ContentType
 import io.ktor.http.HttpStatusCode
 import io.ktor.request.receive
 import io.ktor.response.respond
+import io.ktor.response.respondText
 import io.ktor.routing.get
 import io.ktor.routing.post
 import io.ktor.routing.route
@@ -50,6 +53,12 @@ fun Application.start() {
                 val searchCriteria = call.receive<SearchCriteria>()
                 val id = twitterService.createSearchCriteria(searchCriteria)
                 call.respond(HttpStatusCode.Created, IdResponse(id))
+            }
+
+            post("xconf") {
+                val searchCriteria = call.receive<SearchCriteria>()
+                val response = twitterService.question(searchCriteria)
+                call.respondText(objectMapper.writeValueAsString(response), ContentType("application", "json"), HttpStatusCode.OK)
             }
 
             // Parametro iD -> {id}

@@ -21,13 +21,23 @@ class TwitterClient() {
 
     private fun Status.toTweet() =
         Tweet(
+            this.id,
             this.user.screenName,
-            LocalDateTime(this.createdAt.toInstant().toEpochMilli())
+            LocalDateTime(this.createdAt.toInstant().toEpochMilli()),
+            this.text,
+            this.favoriteCount,
+            this.retweetCount,
+            this.retweetedStatus?.id
         )
 
 }
 
-class Tweet(
+data class Tweet(
+    val id: Long,
     val userName: String,
-    val tweetedDate: LocalDateTime
+    val tweetedDate: LocalDateTime,
+    val text: String,
+    val favoriteCount: Int,
+    val retweetCount: Int,
+    val reTweetId: Long?
 )
