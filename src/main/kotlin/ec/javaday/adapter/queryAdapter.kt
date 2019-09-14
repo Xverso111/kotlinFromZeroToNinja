@@ -16,6 +16,7 @@ fun SearchCriteria.toQuery(): Query {
     val hashTags = this.hashtags.map { "#$it" }.reduce { acc, hashtag -> "$acc AND $hashtag" }
 
     return Query("$hashTags $filter").apply {
+        count = 100
         dateRange?.let {
             since = it.start.minusDays(1).toString("YYYY-MM-dd")
             until = it.end.plusDays(1).toString("YYYY-MM-dd")
